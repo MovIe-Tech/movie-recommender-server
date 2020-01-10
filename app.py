@@ -1,4 +1,5 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
+from main.find import find
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -6,11 +7,8 @@ app.config['JSON_AS_ASCII'] = False
 
 @app.route('/')
 def index():
-    dic = {
-        'foo': 'bar',
-        'ほげ': 'ふが'
-    }
-    return jsonify(dic)
+    input = request.args.get('input')
+    return jsonify(find(input))
 
 
 if __name__ == '__main__':
