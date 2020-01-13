@@ -1,8 +1,8 @@
-import sys
 import numpy as np
 import pandas as pd
 from utils.preprocess import preprocess_TextToList
 from prediction import lsi
+
 
 def find(text):
     input_list = preprocess_TextToList(text)

@@ -6,7 +6,7 @@ import MeCab
 
 ## 基本形で分かち書きをする関数
 def analysis(text):
-    #mecab = MeCab.Tagger("-Ochasen")
+    # mecab = MeCab.Tagger("-Ochasen")
     mecab = MeCab.Tagger('-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd')
     mecab.parse("")
     mecab.parseToNode("dummy")
@@ -14,12 +14,12 @@ def analysis(text):
     word = ""
     pre_feature = ""
     while node:
-         # 名詞、形容詞、動詞、形容動詞であるかを判定する。
+        # 名詞、形容詞、動詞、形容動詞であるかを判定する。
         isUsed = "名詞" in node.feature
         isUsed = "形容詞" in node.feature or isUsed
         isUsed = "動詞" in node.feature or isUsed
         isUsed = "形容動詞" in node.feature or isUsed
-         # 以下に該当する場合は除外する。（ストップワード）
+        # 以下に該当する場合は除外する。（ストップワード）
         isUsed = (not "代名詞" in node.feature) and isUsed
         isUsed = (not "助動詞" in node.feature) and isUsed
         isUsed = (not "非自立" in node.feature) and isUsed

@@ -7,8 +7,8 @@ app.config['JSON_AS_ASCII'] = False
 
 @app.route('/')
 def index():
-    input = request.args.get('input')
-    return jsonify(find(input))
+    text = request.args.get('input')
+    return jsonify(find(text))
 
 
 if __name__ == '__main__':
