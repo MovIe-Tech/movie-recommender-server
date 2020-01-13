@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
-from utils.preprocess import preprocess_TextToList
-from prediction import lsi
+from preprocess import preprocess_TextToList
+import lsi
 
 
 def find(text):

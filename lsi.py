@@ -1,11 +1,5 @@
-import pandas as pd
-import numpy as np
-import sys
-from googletrans import Translator
-import MeCab
 from gensim.models import LsiModel
 from gensim.corpora import Dictionary
-from sklearn.metrics.pairwise import cosine_similarity
 import pickle
 from gensim.similarities.docsim import MatrixSimilarity
 
