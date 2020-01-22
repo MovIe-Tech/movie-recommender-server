@@ -5,8 +5,7 @@ import numpy as np
 from gensim.models import word2vec
 import json
 import MeCab
-from main import lsi
-from main import preprocess
+from main.run import search_for_movies
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -14,24 +13,14 @@ app.config['JSON_AS_ASCII'] = False
 @app.route('/reply', methods=['GET'])
 def reply():
     text = request.args.get('input')
-    input_list = preprocess.preprocess_TextToList(text)
-    pred_list = lsi.predict_movies(input_list)
-    titles_list = pd.read_csv("data/movie_titles.csv").values.tolist()
-    sorted_id = np.argsort(pred_list)[::-1]
+    (titles, rates) = search_for_movies(text, topn=5)
     return jsonify({
-        "1": titles_list[sorted_id[0]],
-        "2": titles_list[sorted_id[1]],
-        "3": titles_list[sorted_id[2]],
-        "4": titles_list[sorted_id[3]],
-        "5": titles_list[sorted_id[4]],
+        "1": titles[0],
+        "2": titles[1],
+        "3": titles[2],
+        "4": titles[3],
+        "5": titles[4],
     })
-
-
-@app.route('/analysis', methods=['GET'])
-def analysis():
-    text = request.args.get('input')
-    input_list = preprocess.analysis(text)
-    return jsonify(input_list)
 
 
 if __name__ == '__main__':
