@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from sklearn.externals import joblib
 import pandas as pd
 import numpy as np
@@ -9,6 +10,7 @@ from main.run import search_for_movies
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
+CORS(app)
 
 @app.route('/reply', methods=['GET'])
 def reply():
