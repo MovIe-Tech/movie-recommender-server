@@ -1,7 +1,5 @@
-import pandas as pd
 import numpy as np
 from gensim.models.doc2vec import Doc2Vec
-from gensim.models.doc2vec import TaggedDocument
 
     
 # Doc2Vecにより類似度のnumpyリストを出力
